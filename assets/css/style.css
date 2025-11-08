@@ -4,7 +4,10 @@ body {
     margin: 0;
     padding: 0;
     color: #2d3436;
-    background-color: #f9f9f9;
+    background: url('/assets/image/wp.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(249, 249, 249, 0.8);
+    background-blend-mode: overlay;
 }
 
 .container {
@@ -43,7 +46,7 @@ a:hover {
 }
 
 nav {
-    background: linear-gradient(135deg, #2c3e50, #3498db);
+	    background: #2bc5a2;
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
