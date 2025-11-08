@@ -13,16 +13,24 @@
     </nav>
     <div class="container">
         <h1>Venti1112 的 RustDesk 服务器</h1>
-        <div class="download-links">
-            <a href="rustdesk windows_x64.exe">RustDesk 客户端下载（Windows x64）</a>
-            <a href="rustdesk windows_x86.exe">RustDesk 客户端下载（Windows x86）</a>
-            <a href="rustdesk android_arm64.apk">RustDesk 客户端下载（Android ARM64）</a>
-            <a href="rustdesk android_armv7.apk">RustDesk 客户端下载（Android ARMv7）</a>
-        </div>
         <div class="server-config">
-            <p>服务器连接配置代码：9JSPj1WZoB1V2tEZpdVRkZjdOFVMKRGWitCSMFFblBlWsF3QuR3KvlUcuVGM1IiOikXZrJCLiIiOikGchJCLi8Wauonex5Sa05WZ25CZyJiOikXYsVmciwiIvlmL6pXcukGduVmduQmciojI0N3boJye</p>
+            <div class="config-code">
+                <p>服务器连接配置代码：</p>
+                <div class="code-box" id="serverCode">9JSPj1WZoB1V2tEZpdVRkZjdOFVMKRGWitCSMFFblBlWsF3QuR3KvlUcuVGM1IiOikXZrJCLiIiOikGchJCLi8Wauonex5Sa05WZ25CZyJiOikXYsVmciwiIvlmL6pXcukGduVmduQmciojI0N3boJye</div>
+                <button class="copy-btn" onclick="copyServerCode()">复制代码</button>
+            </div>
             <p>请使用上述地址配置您的 RustDesk 客户端以连接到此服务器。</p>
         </div>
+        <div class="download-box">
+            <h3>客户端下载</h3>
+            <div class="download-links">
+                <a href="rustdesk windows_x64.exe">Windows x64</a>
+                <a href="rustdesk windows_x86.exe">Windows x86</a>
+                <a href="rustdesk android_arm64.apk">Android ARM64</a>
+                <a href="rustdesk android_armv7.apk">Android ARMv7</a>
+            </div>
+        </div>
     </div>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>
