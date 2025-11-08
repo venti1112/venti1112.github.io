@@ -1,117 +1,140 @@
 /* 基础样式 */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    line-height: 1.8;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f5f5f5;
+    color: #2d3436;
+    background-color: #f9f9f9;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 h1, h3 {
     color: #2c3e50;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
 }
 
 a {
     color: #3498db;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 a:hover {
+    color: #2980b9;
     text-decoration: underline;
 }
 
 /* 导航样式 */
 nav {
-    background-color: #2c3e50;
-    padding: 10px 0;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav a {
     color: white;
-    margin-right: 15px;
+    margin: 0 1.5rem;
+    padding: 0.5rem 0;
+    position: relative;
+    font-weight: 500;
 }
 
-/* 服务器配置样式 */
-.server-config {
-    background-color: #fff;
-    padding: 20px;
+nav a:hover {
+    text-decoration: none;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* 内容样式 */
+.container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #636e72;
+}
+
+.container ul {
+    padding-left: 1.5rem;
+}
+
+.container li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.container li a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #f1f9fe;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-.config-code {
-    margin-bottom: 15px;
-}
-
-.code-box {
-    font-family: monospace;
-    background-color: #f8f9fa;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin: 10px 0;
-    overflow-x: auto;
-    word-break: break-all;
-}
-
-.copy-btn {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.copy-btn:hover {
-    background-color: #2980b9;
-}
-
-/* 下载区域样式 */
-.download-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.download-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.download-links a {
-    display: block;
-    padding: 10px;
-    background-color: #ecf0f1;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
-.download-links a:hover {
+.container li a:hover {
     background-color: #d6eaf8;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
     .container {
-        padding: 10px;
+        padding: 1.5rem;
+        margin: 1rem auto;
     }
     
-    .download-links {
-        grid-template-columns: 1fr;
+    h1 {
+        font-size: 2rem;
+    }
+    
+    nav a {
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    nav {
+        padding: 0.8rem 0;
+    }
+    
+    nav a {
+        margin: 0 0.8rem;
+        font-size: 0.9rem;
     }
 }
