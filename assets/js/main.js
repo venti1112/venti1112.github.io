@@ -50,12 +50,18 @@ document.addEventListener('click', function(e) {
 });
 
 // 页面加载完成时隐藏加载动画
+function hideLoading() {
+    loadingScreen.classList.remove('active');
+    document.body.classList.remove('fade-out');
+}
+
+// 确保页面加载完成后隐藏加载提示
 window.addEventListener('load', function() {
-    setTimeout(() => {
-        loadingScreen.classList.remove('active');
-        document.body.classList.remove('fade-out');
-    }, 100);
+    hideLoading();
 });
+
+// 额外安全措施：确保加载提示不会一直显示
+setTimeout(hideLoading, 3000); // 3秒后强制隐藏
 
 // 确保页面初始加载时也有过渡效果
 document.addEventListener('DOMContentLoaded', function() {
