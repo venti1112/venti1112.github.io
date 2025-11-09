@@ -256,3 +256,77 @@ nav a:hover::after {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+/* 添加页面切换动画样式 */
+.page-content {
+    display: none;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    position: absolute;
+    width: calc(100% - 4rem);
+}
+
+.page-content.active {
+    display: block;
+    position: relative;
+}
+
+.slide-in-left {
+    animation-name: slideInLeft;
+}
+
+.slide-in-right {
+    animation-name: slideInRight;
+}
+
+.slide-out-left {
+    animation-name: slideOutLeft;
+}
+
+.slide-out-right {
+    animation-name: slideOutRight;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
