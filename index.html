@@ -6,25 +6,55 @@
     <title>venti1112的小站</title>
     <link rel="icon" type="image/jpg" href="/assets/image/favicon.jpg">
     <link rel="stylesheet" href="/assets/css/main.css">
-    <script src="/assets/js/loader_init.js"></script>
+    <style>
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <img src="/assets/image/favicon.jpg" alt="venti1112头像" class="nav-avatar">
-        <a href="/" class="nav-active">首页</a>
-        <a href="/about.html">关于我</a>
-        <a href="/rustdesk/">RustDesk服务器</a>
+        <a href="#home" class="nav-link nav-active" data-page="home">首页</a>
+        <a href="#about" class="nav-link" data-page="about">关于我</a>
+        <a href="#rustdesk" class="nav-link" data-page="rustdesk">RustDesk服务器</a>
     </nav>
-    <div class="container">
+    
+    <div class="container page-content active" id="home">
         <h1>欢迎来到venti1112的小站</h1>
         <p>这里是venti1112的小站，畜衷牲一个，是方块人，旅行者，开拓者，绳匠，舰长，大爱巴巴托斯大人！热爱计算机（但是是个大笨蛋！）</p>
         <p>邮箱：3788365896@qq.com</p>
         <p>QQ：3788365896</p>
         <p>提供以下服务：</p>
         <ul>        
-            <li><a href="/rustdesk/">RustDesk远程桌面服务器</a></li>
+            <li><a href="#rustdesk">RustDesk远程桌面服务器</a></li>
         </ul>
     </div>
-    <script src="/assets/js/loader_events.js"></script>
+    
+    <div class="container page-content" id="about">
+        <h1>关于我</h1>
+        <p style="color:red;"><strong>提示：该页面未建设完成！！！</strong></p>
+        <p>畜衷牲一个，是方块人，旅行者，开拓者，绳匠，舰长，大爱巴巴托斯大人！热爱计算机（但是是个大笨蛋！）</p>
+        <p>邮箱：3788365896@qq.com</p>
+        <p>QQ：3788365896</p>
+        <p>GitHub：https://github.com/venti1112</p>
+    </div>
+    
+    <div class="container page-content" id="rustdesk">
+        <h1>Venti1112的RustDesk服务器</h1>
+        <div class="server-config">
+            <div class="config-code">
+                <p>服务器连接配置代码：</p>
+                <div class="code-box" id="serverCode">9JSPj1WZoB1V2tEZpdVRkZjdOFVMKRGWitCSMFFblBlWsF3QuR3KvlUcuVGM1IiOikXZrJCLiIiOikGchJCLi8Wauonex5Sa05WZ25CZyJiOikXYsVmciwiIvlmL6pXcukGduVmduQmciojI0N3boJye</div>
+                <button class="copy-btn" onclick="copyServerCode()">复制代码</button>
+            </div>
+            <p>请将上述连接配置代码导入您的RustDesk客户端以连接到此服务器。</p>
+        </div>
+    </div>
+    <script src="/assets/js/copy.js"></script>
+    <script src="/assets/js/page-switch.js"></script>
 </body>
 </html>
