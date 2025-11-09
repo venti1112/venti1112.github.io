@@ -17,7 +17,8 @@ bgImage.onload = function() {
     document.body.style.backgroundAttachment = 'fixed';
 };
 document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#')) {
+    if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#') && 
+        !e.target.classList.contains('no-loading')) {
         e.preventDefault();
         loadingScreen.classList.add('active');
         document.body.classList.add('fade-out');
@@ -34,9 +35,3 @@ window.addEventListener('load', function() {
     hideLoading();
 });
 setTimeout(hideLoading, 3000);
-document.addEventListener('DOMContentLoaded', function() {
-    document.body.style.opacity = 0;
-    setTimeout(() => {
-        document.body.style.opacity = 1;
-    }, 50);
-});
