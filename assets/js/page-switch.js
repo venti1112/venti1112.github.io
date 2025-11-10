@@ -1,8 +1,10 @@
 let currentPage = 'home';
+let isAnimating = false;
 function showPage(pageId) {
     const currentElement = document.getElementById(currentPage);
     const targetElement = document.getElementById(pageId);
-    if (currentPage === pageId) return;
+    if (isAnimating || currentPage === pageId) return;
+    isAnimating = true;
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const currentIndex = navLinks.findIndex(link => link.getAttribute('data-page') === currentPage);
     const targetIndex = navLinks.findIndex(link => link.getAttribute('data-page') === pageId);
@@ -17,15 +19,14 @@ function showPage(pageId) {
     targetElement.classList.add('slide-in-bottom');
     setTimeout(() => {
         document.querySelectorAll('.page-content').forEach(page => {
-            page.classList.remove('slide-in-left', 'slide-in-right', 
-                                 'slide-in-bottom', 'slide-out-left', 'slide-out-right');
+            page.classList.remove('slide-in-bottom', 'slide-out-left', 'slide-out-right');
         });
         if (currentElement) {
             currentElement.classList.remove('active');
             currentElement.style.display = '';
         }
-        
         currentPage = pageId;
+        isAnimating = false;
     }, 500);
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('nav-active');
