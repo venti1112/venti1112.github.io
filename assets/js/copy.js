@@ -16,6 +16,11 @@ function copyServerCode(event) {
         alert('复制失败：目标内容不存在');
         return;
     }
+    if (!navigator.clipboard) {
+        console.error('浏览器不支持复制');
+        alert('复制失败：浏览器不支持复制');
+        return;
+    }
     const code = codeElement.innerText;
     navigator.clipboard.writeText(code)
         .then(() => {
