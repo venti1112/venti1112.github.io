@@ -1,5 +1,6 @@
 let currentPage = 'home';
 let isAnimating = false;
+let nextPage = null;
 function updateUnderlinePosition(pageId) {
     const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
     const underline = document.querySelector('.nav-underline');
@@ -18,7 +19,11 @@ function updateUnderlinePosition(pageId) {
 function showPage(pageId) {
     const currentElement = document.getElementById(currentPage);
     const targetElement = document.getElementById(pageId);
-    if (isAnimating || currentPage === pageId) return;
+    if (isAnimating) {
+        nextPage = pageId;
+        return;
+    }
+    if (currentPage === pageId) return;
     isAnimating = true;
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const currentIndex = navLinks.findIndex(link => link.getAttribute('data-page') === currentPage);
@@ -50,6 +55,11 @@ function showPage(pageId) {
         }
         currentPage = pageId;
         isAnimating = false;
+        if (nextPage) {
+            const target = nextPage;
+            nextPage = null;
+            showPage(target);
+        }
     }, 500);
 }
 window.addEventListener('load', function() {
