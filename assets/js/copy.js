@@ -18,7 +18,7 @@ function copyServerCode(event) {
     }
     if (!navigator.clipboard) {
         console.error('浏览器不支持复制');
-        alert('复制失败：浏览器不支持复制');
+        alert('复制失败：浏览器不支持复制,请手动复制');
         return;
     }
     const code = codeElement.innerText;
