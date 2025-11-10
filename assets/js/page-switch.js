@@ -28,7 +28,8 @@ function updateUnderlinePosition(pageId, animate = false) {
 function showPage(pageId, isInitial = false) {
     const currentElement = document.getElementById(currentPage);
     const targetElement = document.getElementById(pageId);
-     if (!targetElement) return;
+    if (!targetElement) return;
+    window.scrollTo(0, 0);
     if (isInitial) {
         document.querySelectorAll('.page-content').forEach(page => {
             page.classList.remove('active');
@@ -61,6 +62,7 @@ function showPage(pageId, isInitial = false) {
     if (activeLink) {
         activeLink.classList.add('nav-active');
         updateUnderlinePosition(pageId);
+        
     }
     targetElement.classList.add('active');
     void targetElement.offsetWidth;
@@ -79,6 +81,7 @@ function showPage(pageId, isInitial = false) {
         }
         currentPage = pageId;
         isAnimating = false;
+        document.documentElement.scrollTop = 0;
         if (nextPage) {
             const target = nextPage;
             nextPage = null;
