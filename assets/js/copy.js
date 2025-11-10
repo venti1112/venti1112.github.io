@@ -4,7 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 function copyServerCode(event) {
-    const code = document.getElementById('serverCode').innerText;
+    const targetId = event.target.getAttribute('data-target');
+    if (!targetId) {
+        console.error('复制按钮缺少 data-target 属性');
+        alert('复制失败：配置错误');
+        return;
+    }
+    const codeElement = document.getElementById(targetId);
+    if (!codeElement) {
+        console.error(`元素#${targetId}不存在`);
+        alert('复制失败：目标内容不存在');
+        return;
+    }
+    const code = codeElement.innerText;
     navigator.clipboard.writeText(code)
         .then(() => {
             const btn = event.target;
