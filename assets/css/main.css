@@ -1,4 +1,5 @@
 body {
+    position: relative;
     font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
     line-height: 1.8;
     margin: 0;
@@ -263,12 +264,18 @@ nav a:hover::after {
     animation-duration: 0.5s;
     animation-fill-mode: both;
     position: absolute;
+    /* 精确居中方案 */
+    left: 50%;
+    transform: translateX(-50%);
     width: calc(100% - 4rem);
+    max-width: 1200px; /* 与.container保持一致 */
+    /* 确保z-index高于其他元素 */
+    z-index: 10;
 }
+
 
 .page-content.active {
     display: block;
-    position: relative;
 }
 
 .slide-in-left {
@@ -328,5 +335,20 @@ nav a:hover::after {
     to {
         transform: translateX(100%);
         opacity: 0;
+    }
+}
+
+.slide-in-bottom {
+    animation-name: slideInBottom;
+}
+
+@keyframes slideInBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
