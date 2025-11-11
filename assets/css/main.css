@@ -5,31 +5,88 @@ body {
     padding-top: 70px;
     scroll-behavior: auto !important;
 }
-.container {
+.content-box {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 2rem;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    min-height: 500px;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    position: relative;
+    overflow: hidden;
 }
-.container p {
+.content-box.slide-out-left {
+    animation-name: slideOutLeft;
+}
+.content-box.slide-out-right {
+    animation-name: slideOutRight;
+}
+.content-box.slide-in-bottom {
+    animation-name: slideInBottom;
+}
+.content-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+@keyframes slideInBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.content-box p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
     color: #4d4d4d;
 }
-.container ul {
+.content-box ul {
     padding-left: 1.5rem;
 }
-.container li {
+.content-box li {
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
 }
-.container li a {
+.content-box li a {
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color: rgba(43, 197, 162, 0.8);
@@ -38,7 +95,7 @@ body {
     transition: all 0.3s ease;
     text-decoration: none;
 }
-.container li a:hover {
+.content-box li a:hover {
     background-color: rgba(43, 197, 162, 0.9);
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -179,81 +236,12 @@ nav a:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.page-content {
-    display: none;
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 4rem);
-    max-width: 1200px;
-    z-index: 10;
-    will-change: transform, opacity;
-}
-.page-content.active {
-    display: block;
-}
-.slide-out-left {
-    animation-name: slideOutLeft;
-}
-.slide-out-right {
-    animation-name: slideOutRight;
-}
-.slide-in-bottom {
-    animation-name: slideInBottom;
-}
-@keyframes slideOutLeft {
-    from {
-        transform: translateX(-50%) translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(-50%) translateX(-100%);
-        opacity: 0;
-    }
-}
-
-@keyframes slideOutRight {
-    from {
-        transform: translateX(-50%) translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(-50%) translateX(100%);
-        opacity: 0;
-    }
-}
-
-@keyframes slideInBottom {
-    from {
-        transform: translate(-50%, 100%);
-        opacity: 0;
-    }
-    to {
-        transform: translate(-50%, 0);
-        opacity: 1;
-    }
-}
 @media (max-width: 768px) {
-    .container {
-        padding: 1.5rem;
-        margin: 1rem auto;
-    }
-    
     h1 {
         font-size: 2rem;
     }
-    
-    nav a {
-        margin: 0 1rem;
-    }
 }
 @media (max-width: 480px) {
-    .container {
-        padding: 1rem;
-    }
-    
     nav {
         padding: 0.8rem 0;
     }

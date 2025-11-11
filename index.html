@@ -7,12 +7,6 @@
     <link rel="icon" type="image/jpg" href="/assets/image/favicon.jpg">
     <link rel="stylesheet" href="/assets/css/main.css">
     <style>
-        .page-content {
-            display: none;
-        }
-        .page-content.active {
-            display: block;
-        }
         #loading-screen {
             position: fixed;
             top: 0;
@@ -50,9 +44,9 @@
 </head>
 <body>
     <div id="loading-screen">
-    <div class="loader"></div>
-    <p class="loading-text">加载中...</p>
-  </div>
+        <div class="loader"></div>
+        <p class="loading-text">加载中...</p>
+    </div>
     <nav>
         <div class="nav-container">
             <img src="/assets/image/favicon.jpg" alt="venti1112头像" class="nav-avatar">
@@ -62,80 +56,24 @@
             <div class="nav-underline"></div>
         </div>
     </nav>
-    <div class="container page-content" id="home" page-title="首页">
-        <h1>欢迎来到venti1112的小站</h1>
-        <p>这里是venti1112的小站，<a href="#about">关于我</a></p>
-        <p>目前提供以下服务：</p>
-        <ul>        
-            <li><a href="#rustdesk">RustDesk远程桌面服务器</a></li>
-        </ul>
-    </div>
-    <div class="container page-content" id="about" page-title="关于我">
-        <h1>关于我</h1>
-        <p style="color:red;"><strong>提示：该页面未建设完成！！！</strong></p>
-        <p>畜衷牲一个，是方块人，旅行者，开拓者，绳匠，舰长，大爱巴巴托斯大人！热爱计算机（但是是个大笨蛋！）</p>
-        <p>邮箱：3788365896@qq.com</p>
-        <p>QQ：3788365896</p>
-        <p>GitHub：https://github.com/venti1112</p>
-        <p>Steam：https://steamcommunity.com/profiles/76561199731450262/</p>
-    </div>
-    <div class="container page-content" id="rustdesk" page-title="RustDesk服务器">
-        <h1>Venti1112的RustDesk服务器</h1>
-        <div class="server-config">
-            <div class="config-code">
-                <p>服务器连接配置代码：</p>
-                <div class="code-box" id="serverCode">9JSPj1WZoB1V2tEZpdVRkZjdOFVMKRGWitCSMFFblBlWsF3QuR3KvlUcuVGM1IiOikXZrJCLiIiOikGchJCLi8Wauonex5Sa05WZ25CZyJiOikXYsVmciwiIvlmL6pXcukGduVmduQmciojI0N3boJye</div>
-                <button class="copy-btn" data-target="serverCode">复制代码</button>
-            </div>
-            <p>请将上述连接配置代码导入您的RustDesk客户端以连接到此服务器。</p>
+    <div class="content-box" id="content-box">
+        <div id="content-loading" class="content-loading" style="display: none;">
+            <div class="loader" style="border-width: 5px; width: 40px; height: 40px;"></div>
+            <p class="loading-text" style="margin-top: 10px; color: #156c54; font-size: 16px;">加载中...</p>
         </div>
-        <div class="download-box">
-            <h3>客户端下载</h3>
-            <p>当前版本：1.4.3 更新时间：2025-10-18</p>
-            <div class="download-links">
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.exe">Windows x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86-sciter.exe">Windows x86 (Sciter)</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-aarch64-signed.apk">Android ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-armv7-signed.apk">Android ARMv7</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-universal-signed.apk">Android Universal</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64-signed.apk">Android x64</a>
-                <a href="https://apps.apple.com/us/app/rustdesk-remote-desktop/id1581225015">iOS</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.dmg">Mac x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-aarch64.dmg">Mac ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.AppImage">AppImage x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-aarch64.AppImage">AppImage ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.deb">Ubuntu/Debian x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64-sciter.deb">Ubuntu/Debian x64 (Sciter)</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-aarch64.deb">Ubuntu/Debian ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-armv7-sciter.deb">Ubuntu/Debian ARMv7 (Sciter)</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.flatpak">Flatpak x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64-sciter.flatpak">Flatpak x64 (Sciter)</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-aarch64.flatpak">Flatpak ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-0.x86_64.rpm">Fedora/RHEL x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-0.aarch64.rpm">Fedora/RHEL ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-0.x86_64-suse.rpm">Suse Linux x64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-0.aarch64-suse.rpm">Suse Linux ARM64</a>
-                <a href="https://xget.xi-xu.me/gh/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-0-x86_64.pkg.tar.zst">Arch Linux</a>
-            </div>
-        </div>
-        <div>
-            <p>更多客户端下载请访问 <a href="https://rustdesk.com/zh-cn/download/" target="_blank">RustDesk官方下载页面</a></p>
-            <p>RustDesk开源项目: 
-                <a href="https://github.com/rustdesk/rustdesk/" target="_blank">GitHub 仓库</a> | 
-                <a href="https://rustdesk.com/zh-cn/" target="_blank">官方网站</a>
-            </p>
-        </div>
+        <div id="page-content"></div>
     </div>
+    
     <script src="/assets/js/page-switch.js"></script>
     <script src="/assets/js/copy.js"></script>
     <script>
     window.addEventListener('load', function() {
-      const loadingScreen = document.getElementById('loading-screen');
-      loadingScreen.style.opacity = '0';
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-      }, 300);
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 300);
     });
-  </script>
+    </script>
 </body>
 </html>
