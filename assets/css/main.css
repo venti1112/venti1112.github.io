@@ -1,9 +1,8 @@
 :root {
     --primary-color: #156c54;
-    --primary-light: rgba(43, 197, 162, 0.8);
+    --primary-light: #4cd8b8;
     --primary-dark: #114a3a;
 }
-
 body {
     background: url('/assets/image/wp.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -287,4 +286,123 @@ nav a:hover {
         background: white !important;
         border: none !important;
     }
+}
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --nav-bg: rgba(18, 18, 18, 0.7);
+    --content-bg: rgba(18, 18, 18, 0.5);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .content-box p,
+[data-theme="dark"] .content-box li,
+[data-theme="dark"] .content-box ul {
+    color: #ffffff;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+    background: linear-gradient(90deg, #4cd8b8, #2bc5a2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+[data-theme="dark"] a {
+    color: #4cd8b8;
+}
+html {
+    transition: 
+        background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+    transition: 
+        background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-box p,
+.content-box li,
+.content-box ul,
+h1, h2, h3,
+a {
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: -1;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav {
+    transition: 
+        background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.content-box {
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-theme="dark"] body::before {
+    background: rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+[data-theme="dark"] nav {
+    background: var(--nav-bg);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+[data-theme="dark"] .content-box {
+    background: var(--content-bg);
+}
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0 1rem;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-toggle .icon {
+    position: absolute;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 28px;
+    height: 28px;
+}
+.theme-toggle .sun {
+    opacity: 1;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease;
+    transform-origin: center;
+}
+
+:not([data-theme="dark"]) .theme-toggle:hover .sun {
+    transform: rotate(180deg);
+}
+.theme-toggle .moon {
+    opacity: 0;
+}
+[data-theme="dark"] .theme-toggle .sun {
+    opacity: 0;
+}
+[data-theme="dark"] .theme-toggle .moon {
+    opacity: 1;
+}
+.theme-toggle:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
