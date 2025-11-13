@@ -45,8 +45,8 @@
     --loader-size: 40px; /* 加载器尺寸 */
     --easing-standard: ease; /* 标准缓动函数 */
     --loader-border-width: 5px; /* 加载器边框宽度 */
-    --duration-sm: 0.2s;/* 小型持续时间，用于悬停/下划线过渡 */
-    --duration-md: 0.5s;/* 中等持续时间，用于切换页面/深浅色切换过渡 */
+    --duration-sm: 0.2s;/* 小型持续时间，用于悬停 */
+    --duration-md: 0.5s;/* 中等持续时间，用于切换页面/深浅色切换过渡/下划线过渡 */
     --gap-md-alt: 10px;/* 中等替代间距，用于加载组件 */
     --gap-lg: 1rem;/* 大间距标准值，用于内容区域和代码框 */
 
@@ -101,13 +101,17 @@ a:hover {
 }
 
 /* 页面主体背景与布局 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: url('/assets/image/wp.jpg') no-repeat center center fixed; /* 设置背景图片 */
-    background-size: cover; /* 背景图片覆盖整个页面 */
-    margin: 0; /* 重置外边距 */
-    height: 100%; /* 高度占满视口 */
+    background: url('/assets/image/wp.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: var(--theme-bg);
     padding-top: calc(var(--navbar-min-height) + var(--gap-lg));
-    background-color: var(--theme-bg); /* 背景色 */
 }
 
 /* 固定定位导航栏样式 */
