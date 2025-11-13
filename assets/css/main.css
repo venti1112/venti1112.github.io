@@ -321,27 +321,6 @@ button.theme-toggle-btn {
 }
 
 /* 主题切换按钮图标系统 */
-button.theme-toggle-btn {
-    text-indent: -9999px; /* 隐藏原始文本 */
-    overflow: hidden;
-    position: relative;
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
-button.theme-toggle-btn::before {
-    content: "☀️"; /* 浅色模式默认图标 */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: calc(var(--font-size-sm) * 1.2);
-    transition: transform var(--duration-sm) var(--easing-standard);
-}
-
-[data-bs-theme="dark"] button.theme-toggle-btn::before {
-    content: "🌙"; /* 深色模式图标 */
-}
 
 /* 太阳悬停旋转效果（仅浅色模式） */
 [data-bs-theme="light"] button.theme-toggle-btn:hover::before {
