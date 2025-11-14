@@ -80,8 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 显示内容加载提示
-        contentLoading.style.display = 'flex';
+        // 显示内容加载提示，强制显示并重置动画
+        contentLoading.style.display = 'flex !important';
+        contentLoading.querySelector('.loader').style.animation = 'none';
+        void contentLoading.querySelector('.loader').offsetHeight; // 触发重绘
+        contentLoading.querySelector('.loader').style.animation = '';
 
         // 通过fetch异步加载页面HTML内容
         fetch(`/page/${pageId}.html`, { credentials: 'same-origin' })

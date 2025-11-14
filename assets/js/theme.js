@@ -28,11 +28,10 @@ const getPreferredTheme = () => {
 
 // 设置主题到HTML元素的data-bs-theme属性
 const setTheme = theme => {
-  if (theme === 'auto') {
-    document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
-  } else {
-    document.documentElement.setAttribute('data-bs-theme', theme)
-  }
+  const newTheme = theme === 'auto' ? 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : 
+    theme
+  document.documentElement.setAttribute('data-bs-theme', newTheme)
 }
 
 // 应用首选主题
@@ -55,14 +54,11 @@ const showActiveTheme = (theme, focus = false) => {
   btnToActive.classList.add('active');
   btnToActive.setAttribute('aria-pressed', 'true');
 
-  // 更新按钮图标
-  const icon = btnToActive.querySelector('i.bi');
-  if (icon) {
-    if (theme === 'dark') {
-      icon.classList.replace('bi-moon', 'bi-sun');
-    } else {
-      icon.classList.replace('bi-sun', 'bi-moon');
-    }
+  // 更新按钮文本内容为Unicode符号
+  if (theme === 'dark') {
+    btnToActive.textContent = '☀️';
+  } else {
+    btnToActive.textContent = '🌙';
   }
 
   // 动态更新按钮的data-bs-theme-value为相反主题值，实现切换逻辑

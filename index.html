@@ -10,13 +10,11 @@
     <!-- 网站图标 -->
     <link rel="icon" type="image/jpg" href="/assets/image/favicon.jpg">
     <!-- Bootstrap CSS框架 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Bootstrap Icons字体图标 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <!-- 主样式表 -->
     <link rel="stylesheet" href="/assets/css/main.css">
     <!-- Bootstrap JavaScript捆绑包 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <script src="/assets/js/bootstrap.min.js" defer></script>
     <!-- 页面过渡动画脚本 -->
     <script src="/assets/js/page-transition.js" defer></script>
     <!-- 主题切换脚本 -->
@@ -62,7 +60,7 @@
 </head>
 <body class="bg-primary">
     <!-- 全屏加载屏幕，在页面完全加载前显示 -->
-    <div id="loading-screen" aria-live="polite" aria-label="页面加载中">
+    <div id="loading-screen" aria-live="polite" aria-label="页面加载中" style="display: flex !important;">
         <div class="loader" role="status"></div>
         <p class="loading-text">加载中...</p>
     </div>
@@ -92,7 +90,7 @@
                     <button class="btn btn-outline-secondary theme-toggle-btn" id="themeToggle" type="button"
                         data-bs-theme-value="dark"
                         aria-label="切换深色模式">
-                        <i class="bi bi-moon"></i>
+                        🌙
                     </button>
                 </form>
             </div>

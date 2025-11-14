@@ -57,13 +57,27 @@
     --theme-toggle-underline-bottom: -2px; /* 微调位置 */
 }
 
-/* 深色模式主题变量覆盖 */
+/* 主题变量定义 */
+:root, [data-bs-theme="light"] {
+    --theme-bg: rgba(255, 255, 255, 0.3);
+    --theme-text: #000;
+    --theme-primary: #4cd8b8;
+    --theme-secondary: #156c54;
+}
+
 [data-bs-theme="dark"] {
-    --theme-bg: var(--theme-bg-dark); /* 深色模式使用深色背景 */
-    --theme-text: #fff; /* 深色模式文本使用白色 */
-    --theme-text-inverse: #000; /* 深色模式反色文本使用黑色 */
-    --theme-primary: #156c54; /* 深色模式主要强调色，深绿色 */
-    --theme-secondary: #4cd8b8; /* 深色模式次要强调色，青绿色 */
+    --theme-bg: rgba(0, 0, 0, 0.3);
+    --theme-text: #fff;
+    --theme-primary: #156c54;
+    --theme-secondary: #4cd8b8;
+}
+
+/* 全局过渡效果 */
+* {
+    transition: background-color 0.5s ease, 
+               color 0.5s ease,
+               border-color 0.5s ease,
+               box-shadow 0.5s ease !important;
 }
 
 /* 深色模式背景调暗层 */
@@ -74,9 +88,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--theme-bg-dark); /* 深色覆盖层 */
+    background-color: var(--theme-bg);
     z-index: -1;
     pointer-events: none;
+    transition: background-color 0.5s ease;
 }
 
 /* 全局元素默认样式：统一过渡、圆角和边框 */
