@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 页面标题映射表，用于动态更新浏览器标签页标题
     const pageTitles = {
         home: '首页',
-        about: '关于',
-        rustdesk: 'RustDesk服务器'
+        about: '关于'
     };
 
     let currentPage = null;  // 当前显示的页面ID
