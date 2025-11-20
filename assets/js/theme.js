@@ -74,12 +74,6 @@ const showActiveTheme = (theme, focus = false) => {
 window.addEventListener('DOMContentLoaded', () => {
   const currentTheme = getPreferredTheme();
   
-  // 初始化主题切换按钮的data-bs-theme-value属性
-  const themeToggle = document.getElementById('themeToggle');
-  if (themeToggle) {
-    themeToggle.setAttribute('data-bs-theme-value', currentTheme === 'dark' ? 'light' : 'dark');
-  }
-  
   // 显示当前激活的主题状态
   showActiveTheme(currentTheme);
 
