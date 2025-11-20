@@ -16,14 +16,14 @@ const setStoredTheme = theme => {
   }
 }
 
-// 获取首选主题（优先使用存储的主题，否则根据系统偏好）
+// 获取首选主题（优先使用存储的主题，否则默认为浅色）
 const getPreferredTheme = () => {
   const storedTheme = getStoredTheme()
   if (storedTheme) {
     return storedTheme
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return 'light'
 }
 
 // 设置主题到HTML元素的data-bs-theme属性
@@ -39,7 +39,7 @@ setTheme(getPreferredTheme())
 
 // 更新主题切换按钮UI的状态
 const showActiveTheme = (theme, focus = false) => {
-  const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`);
+  const btnToActive = document.querySelector('[data-bs-theme-value]');
   if (!btnToActive) {
     return;
   }
