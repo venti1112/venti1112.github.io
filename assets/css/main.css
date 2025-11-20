@@ -1,11 +1,10 @@
 :root {
     /* 主题颜色变量 */
-    --theme-bg: rgba(255, 255, 255, 0.3); /* 主背景颜色，半透明白色 */
-    --theme-bg-dark: rgba(0, 0, 0, 0.3); /* 深色模式背景颜色，调整透明度至0.7以降低背景亮度 */
-    --theme-primary: #4cd8b8; /* 主要强调色，青绿色 */
-    --theme-secondary: #156c54; /* 次要强调色，深绿色 */
-    --theme-text: #000; /* 默认文本颜色，黑色 */
-    --theme-text-inverse: #fff; /* 反色文本，白色 */
+    --theme-bg: rgba(255, 255, 255, 0.3); /* 恢复背景透明度为0.3 */
+    --theme-primary: #4cd8b8; /* 恢复主色调为#4cd8b8 */
+    --theme-secondary: #156c54; /* 恢复次色调为#156c54 */
+    --theme-text: #000;
+    --theme-text-inverse: #fff;
 
     /* 导航栏尺寸与视觉效果变量 */
     --navbar-padding: 1.1rem 1rem; /* 导航栏内边距 */
@@ -23,7 +22,7 @@
     --underline-color: #fff; /* 导航下划线颜色 */
     --underline-offset: 0px; /* 导航下划线水平偏移量 */
     --underline-bottom: 0px; /* 导航下划线底部距离 */
-    --navbar-underline-transition-easing: cubic-bezier(0.68, -0.8, 0.27, 1.8); /* 导航下划线过渡动画缓动函数 */
+    --navbar-underline-transition-easing: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
     /* 内容区域样式变量 */
     --content-padding: 2rem; /* 内容区域内外边距 */
@@ -46,7 +45,7 @@
     --easing-standard: ease; /* 标准缓动函数 */
     --loader-border-width: 5px; /* 加载器边框宽度 */
     --duration-sm: 0.2s;/* 小型持续时间，用于悬停 */
-    --duration-md: 0.8s;/* 中等持续时间，用于切换页面/深浅色切换过渡/下划线过渡 */
+    --duration-md: 0.5s;/* 动画持续时间：恢复为0.5s */
     --gap-md-alt: 10px;/* 中等替代间距，用于加载组件 */
     --gap-lg: 1rem;/* 大间距标准值，用于内容区域和代码框 */
 
@@ -58,14 +57,34 @@
 }
 
 /* 主题变量定义 */
-:root {
+:root, [data-bs-theme="light"] {
     --theme-bg: rgba(255, 255, 255, 0.3);
     --theme-text: #000;
     --theme-primary: #4cd8b8;
     --theme-secondary: #156c54;
 }
 
+/* 深色模式样式恢复 */
+[data-bs-theme="dark"] {
+    --theme-bg: rgba(0, 0, 0, 0.3);
+    --theme-text: #fff;
+    --theme-primary: #156c54;
+    --theme-secondary: #4cd8b8;
+}
 
+/* 深色模式背景调暗层 */
+[data-bs-theme="dark"]::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--theme-bg);
+    z-index: -1;
+    pointer-events: none;
+    transition: background-color 0.5s ease;
+}
 
 /* 全局元素默认样式：统一过渡、圆角和边框 */
 * {
@@ -187,22 +206,78 @@ body {
     word-break: break-word; /* 断字换行 */
 }
 
-/* 内容区域向左滑出动画应用 */
+/* 内容区域动画恢复原始缓动函数 */
 .content-box.slide-out-left {
-    animation-name: slideOutLeft; /* 使用向左滑出动画 */
-    animation-timing-function: var(--navbar-underline-transition-easing);
+    animation-name: slideOutLeft;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-/* 内容区域向右滑出动画应用 */
 .content-box.slide-out-right {
-    animation-name: slideOutRight; /* 使用向右滑出动画 */
+    animation-name: slideOutRight;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.content-box.slide-in-bottom {
+    animation-name: slideInBottom;
     animation-timing-function: var(--navbar-underline-transition-easing);
 }
 
-/* 内容区域从底部滑入动画应用 */
-.content-box.slide-in-bottom {
-    animation-name: slideInBottom; /* 使用从底部滑入动画 */
+/* 从顶部滑入动画关键帧 */
+@keyframes slideInTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 从左侧滑入动画关键帧 */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 从右侧滑入动画关键帧 */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 应用回弹动画到内容盒子的多种进入方式 */
+.content-box.slide-in-top {
+    animation-name: slideInTop;
     animation-timing-function: var(--navbar-underline-transition-easing);
+    animation-duration: var(--duration-md);
+    animation-fill-mode: both;
+}
+
+.content-box.slide-in-left {
+    animation-name: slideInLeft;
+    animation-timing-function: var(--navbar-underline-transition-easing);
+    animation-duration: var(--duration-md);
+    animation-fill-mode: both;
+}
+
+.content-box.slide-in-right {
+    animation-name: slideInRight;
+    animation-timing-function: var(--navbar-underline-transition-easing);
+    animation-duration: var(--duration-md);
+    animation-fill-mode: both;
 }
 
 /* 向左滑出动画关键帧 */
