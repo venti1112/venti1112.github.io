@@ -23,7 +23,7 @@
     --underline-color: #fff; /* 导航下划线颜色 */
     --underline-offset: 0px; /* 导航下划线水平偏移量 */
     --underline-bottom: 0px; /* 导航下划线底部距离 */
-    --navbar-underline-transition-easing: cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 导航下划线过渡动画缓动函数 */
+    --navbar-underline-transition-easing: cubic-bezier(0.68, -0.8, 0.27, 1.8); /* 导航下划线过渡动画缓动函数 */
 
     /* 内容区域样式变量 */
     --content-padding: 2rem; /* 内容区域内外边距 */
@@ -46,7 +46,7 @@
     --easing-standard: ease; /* 标准缓动函数 */
     --loader-border-width: 5px; /* 加载器边框宽度 */
     --duration-sm: 0.2s;/* 小型持续时间，用于悬停 */
-    --duration-md: 0.5s;/* 中等持续时间，用于切换页面/深浅色切换过渡/下划线过渡 */
+    --duration-md: 0.8s;/* 中等持续时间，用于切换页面/深浅色切换过渡/下划线过渡 */
     --gap-md-alt: 10px;/* 中等替代间距，用于加载组件 */
     --gap-lg: 1rem;/* 大间距标准值，用于内容区域和代码框 */
 
@@ -58,41 +58,14 @@
 }
 
 /* 主题变量定义 */
-:root, [data-bs-theme="light"] {
+:root {
     --theme-bg: rgba(255, 255, 255, 0.3);
     --theme-text: #000;
     --theme-primary: #4cd8b8;
     --theme-secondary: #156c54;
 }
 
-[data-bs-theme="dark"] {
-    --theme-bg: rgba(0, 0, 0, 0.3);
-    --theme-text: #fff;
-    --theme-primary: #156c54;
-    --theme-secondary: #4cd8b8;
-}
 
-/* 全局过渡效果 */
-* {
-    transition: background-color 0.5s ease, 
-               color 0.5s ease,
-               border-color 0.5s ease,
-               box-shadow 0.5s ease !important;
-}
-
-/* 深色模式背景调暗层 */
-[data-bs-theme="dark"]::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--theme-bg);
-    z-index: -1;
-    pointer-events: none;
-    transition: background-color 0.5s ease;
-}
 
 /* 全局元素默认样式：统一过渡、圆角和边框 */
 * {
@@ -217,16 +190,19 @@ body {
 /* 内容区域向左滑出动画应用 */
 .content-box.slide-out-left {
     animation-name: slideOutLeft; /* 使用向左滑出动画 */
+    animation-timing-function: var(--navbar-underline-transition-easing);
 }
 
 /* 内容区域向右滑出动画应用 */
 .content-box.slide-out-right {
     animation-name: slideOutRight; /* 使用向右滑出动画 */
+    animation-timing-function: var(--navbar-underline-transition-easing);
 }
 
 /* 内容区域从底部滑入动画应用 */
 .content-box.slide-in-bottom {
     animation-name: slideInBottom; /* 使用从底部滑入动画 */
+    animation-timing-function: var(--navbar-underline-transition-easing);
 }
 
 /* 向左滑出动画关键帧 */
